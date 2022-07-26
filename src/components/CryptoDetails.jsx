@@ -26,8 +26,8 @@ const CryptoDetails = () => {
     const [timePeriod, setTimeperiod] = useState("24h");
     const { data, isFetching } = useGetCryptoDetailsQuery(coinUuid);
     const { data: coinHistory } = useGetCryptoHistoryQuery({ coinUuid, timePeriod });
+    console.log(coinHistory)
     const cryptoDetails = data?.data?.coin;
-    // console.log(cryptoDetails['24hVolume'])
 
     if (isFetching) return "Loading...";
 
@@ -101,7 +101,7 @@ const CryptoDetails = () => {
                 </p>
             </Col>
             <Select
-                defaultValue="7d"
+                defaultValue="24h"
                 className="select-timeperiod"
                 placeholder="Select Timeperiod"
                 onChange={(value) => setTimeperiod(value)}
@@ -113,8 +113,8 @@ const CryptoDetails = () => {
 
             <LineChart
                 coinHistory={coinHistory}
-                currentPrice={millify(cryptoDetails.price)}
-                coinName={cryptoDetails.name}
+                currentPrice={millify(cryptoDetails?.price)}
+                coinName={cryptoDetails?.name}
             />
 
             <Col className="stats-container">
