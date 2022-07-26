@@ -23,7 +23,7 @@ const App = () => {
                                 path="/cryptocurrencies"
                                 element={<Cryptocurrencies />}
                             ></Route>
-                            <Route exact path="/crypto/:coinId" element={<CryptoDetails />}></Route>
+                            <Route exact path="/crypto/:coinUuid" element={<CryptoDetails />}></Route>
                             <Route exact path="/news" element={<News />}></Route>
                         </Routes>
                     </div>
